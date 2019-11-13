@@ -17,6 +17,9 @@ public class InterfacePaint extends javax.swing.JFrame {
     Elipse elipse = new Elipse();
     Elipse circulo = new Elipse();
     Cilindro cilindro = new Cilindro();
+    Retangulo borracha = new Retangulo();
+    Poligono poligono = new Poligono();
+    int tamBorracha = 5;
 
     public InterfacePaint() {
         initComponents();
@@ -43,6 +46,7 @@ public class InterfacePaint extends javax.swing.JFrame {
         btnSpray = new javax.swing.JButton();
         btnBorracha = new javax.swing.JButton();
         btnPoligono = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,11 +106,6 @@ public class InterfacePaint extends javax.swing.JFrame {
         );
 
         checkFundo.setText("Fundo");
-        checkFundo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkFundoActionPerformed(evt);
-            }
-        });
 
         btnRetangulo.setText("Retangulo");
         btnRetangulo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +158,17 @@ public class InterfacePaint extends javax.swing.JFrame {
             }
         });
 
-        btnPoligono.setText("Poligono");
+        btnPoligono.setText("Capturar Pontos");
         btnPoligono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPoligonoActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Formar Poligono");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -197,7 +203,9 @@ public class InterfacePaint extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSpray)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBorracha))
+                        .addComponent(btnBorracha)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton3))
                     .addComponent(canvasPaint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -208,23 +216,11 @@ public class InterfacePaint extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkArea)
                     .addComponent(btnSpray)
-                    .addComponent(btnBorracha))
+                    .addComponent(btnBorracha)
+                    .addComponent(jButton3))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(canvasPaint, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pnlCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(checkFundo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnPonto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnReta)
@@ -237,7 +233,21 @@ public class InterfacePaint extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPoligono)))
+                        .addComponent(btnPoligono)
+                        .addGap(37, 37, 37))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(canvasPaint, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(checkFundo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -272,10 +282,6 @@ public class InterfacePaint extends javax.swing.JFrame {
     private void btnRetanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetanguloActionPerformed
         tipoFigura = TipoFigura.tfRetangulo;
     }//GEN-LAST:event_btnRetanguloActionPerformed
-
-    private void checkFundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFundoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkFundoActionPerformed
 
     private void pnlCorFundoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCorFundoMouseClicked
         pnlCorFundo.setBackground(jColorChooser1.getColor());
@@ -356,13 +362,29 @@ public class InterfacePaint extends javax.swing.JFrame {
                 cilindro.corFundo = pnlCorFundo.getBackground();
             }
             elipse.cor = pnlCor.getBackground();
-        }else if (tipoFigura == TipoFigura.tfSpray) {
+        } else if (tipoFigura == TipoFigura.tfSpray) {
             Spray spray = new Spray();
             spray.x = evt.getX();
             spray.y = evt.getY();
             spray.cor = pnlCor.getBackground();
             spray.desenhar(canvasPaint.getGraphics());
-        }
+        } else if (tipoFigura == TipoFigura.tfBorracha) {
+            Retangulo borracha = new Retangulo();
+            borracha.x = evt.getX();
+            borracha.y = evt.getY();
+            borracha.base = tamBorracha;
+            borracha.altura = tamBorracha;
+            borracha.corFundo = Color.WHITE;
+            borracha.cor = Color.WHITE;
+            borracha.desenhar(canvasPaint.getGraphics(), true);
+            
+        }else if (tipoFigura == TipoFigura.tfPoligono) {
+            poligono.x = evt.getX();
+            poligono.y = evt.getY();
+            poligono.cor = pnlCor.getBackground();
+            poligono.desenhar(canvasPaint.getGraphics());
+        } 
+        
     }//GEN-LAST:event_canvasPaintMousePressed
 
     private void btnRetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetaActionPerformed
@@ -388,6 +410,11 @@ public class InterfacePaint extends javax.swing.JFrame {
     private void btnPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoligonoActionPerformed
         tipoFigura = TipoFigura.tfPoligono;
     }//GEN-LAST:event_btnPoligonoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        poligono.formarPoligono(canvasPaint.getGraphics());
+        poligono.limparListaPontos();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,6 +464,7 @@ public class InterfacePaint extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkFundo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
