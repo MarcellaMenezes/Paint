@@ -26,19 +26,11 @@ public class Cilindro extends D3 {
         g.setColor(cor);
         g.drawLine(x2, y, x2, y2);
 
-        if (fundo) {
-            g.setColor(corFundo);
-            g.fillOval(x, y, x2 - x, 2);
-        }
         g.setColor(cor);
-        g.drawOval(x, y, x2 - x, 4);
+        g.drawOval(x, y-4, x2 - x, 8);
 
-        if (fundo) {
-            g.setColor(corFundo);
-            g.fillOval(x, y2, x2 - x, 2);
-        }
         g.setColor(cor);
-        g.drawOval(x, y2, x2 - x, 4);
+        g.drawOval(x, y2-4, x2 - x, 8);
 
     }
 

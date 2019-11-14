@@ -371,7 +371,7 @@ public class InterfacePaint extends javax.swing.JFrame {
             spray.x = evt.getX();
             spray.y = evt.getY();
             spray.cor = pnlCor.getBackground();
-            spray.desenhar(canvasPaint.getGraphics());
+            spray.desenhar(canvasPaint.getGraphics()); 
         } else if (tipoFigura == TipoFigura.tfBorracha) {
             Retangulo borracha = new Retangulo();
             borracha.x = evt.getX();

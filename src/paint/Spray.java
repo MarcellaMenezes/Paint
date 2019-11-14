@@ -5,16 +5,21 @@ import java.util.Random;
 
 public class Spray extends Ponto {
 
-    int raio = 20;
-
+    int diametro = 50;
+   
     @Override
     public void desenhar(Graphics g) {
         g.setColor(cor);
         Random posRandom = new Random();
-        for (int i = 0; i < raio; i++) {
-            int posx = posRandom.nextInt(raio);
-            int posy = posRandom.nextInt(raio);
-            g.drawLine(x + posx, y + posy, x + posx, y + posy);
+        for (int i = 0; i < 300; i++) {
+            int posx = posRandom.nextInt(diametro)+x - diametro/2;
+            int posy = posRandom.nextInt(diametro)+y - diametro/2;
+            
+            double conta = Math.pow(posx - x, 2);
+            conta += Math.pow(posy - y, 2);
+            if((Math.sqrt(conta))<=diametro/2){
+                g.drawLine(posx, posy, posx, posy);
+            }   
         }
     }
 
