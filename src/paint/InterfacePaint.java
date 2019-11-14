@@ -66,6 +66,11 @@ public class InterfacePaint extends javax.swing.JFrame {
                 canvasPaintMouseReleased(evt);
             }
         });
+        canvasPaint.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                canvasPaintMouseDragged(evt);
+            }
+        });
 
         jLabel1.setText("Cor");
 
@@ -302,7 +307,6 @@ public class InterfacePaint extends javax.swing.JFrame {
             retangulo.showArea = checkArea.isSelected();
             retangulo.desenhar(canvasPaint.getGraphics(), checkFundo.isSelected());
         } else if (tipoFigura == TipoFigura.tfElipse) {
-
             elipse.raioHorizontal = (evt.getX() - elipse.x) / 2;
             elipse.raioVertical = (evt.getY() - elipse.y) / 2;
             elipse.showArea = checkArea.isSelected();
@@ -377,14 +381,14 @@ public class InterfacePaint extends javax.swing.JFrame {
             borracha.corFundo = Color.WHITE;
             borracha.cor = Color.WHITE;
             borracha.desenhar(canvasPaint.getGraphics(), true);
-            
-        }else if (tipoFigura == TipoFigura.tfPoligono) {
+
+        } else if (tipoFigura == TipoFigura.tfPoligono) {
             poligono.x = evt.getX();
             poligono.y = evt.getY();
             poligono.cor = pnlCor.getBackground();
             poligono.desenhar(canvasPaint.getGraphics());
-        } 
-        
+        }
+
     }//GEN-LAST:event_canvasPaintMousePressed
 
     private void btnRetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetaActionPerformed
@@ -415,6 +419,31 @@ public class InterfacePaint extends javax.swing.JFrame {
         poligono.formarPoligono(canvasPaint.getGraphics());
         poligono.limparListaPontos();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void canvasPaintMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasPaintMouseDragged
+        if (tipoFigura == TipoFigura.tfPonto) {
+            Ponto ponto = new Ponto();
+            ponto.x = evt.getX();
+            ponto.y = evt.getY();
+            ponto.cor = pnlCor.getBackground();
+            ponto.desenhar(canvasPaint.getGraphics());
+        } else if (tipoFigura == TipoFigura.tfBorracha) {
+            Retangulo borracha = new Retangulo();
+            borracha.x = evt.getX();
+            borracha.y = evt.getY();
+            borracha.base = tamBorracha;
+            borracha.altura = tamBorracha;
+            borracha.corFundo = Color.WHITE;
+            borracha.cor = Color.WHITE;
+            borracha.desenhar(canvasPaint.getGraphics(), true);
+        } else if (tipoFigura == TipoFigura.tfSpray) {
+            Spray spray = new Spray();
+            spray.x = evt.getX();
+            spray.y = evt.getY();
+            spray.cor = pnlCor.getBackground();
+            spray.desenhar(canvasPaint.getGraphics());
+        }
+    }//GEN-LAST:event_canvasPaintMouseDragged
 
     /**
      * @param args the command line arguments

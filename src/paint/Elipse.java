@@ -7,16 +7,18 @@ import java.awt.Graphics;
  *
  * @author marce
  */
-public class Elipse extends D2{
-    int raioHorizontal, raioVertical;         
+public class Elipse extends D2 {
+
+    int raioHorizontal, raioVertical;
+
     public void desenhar(Graphics g, Boolean fundo) {
         super.desenhar(g);
-        if(fundo){
+        if (fundo) {
             g.setColor(corFundo);
-            g.fillOval(x, y, raioHorizontal*2, raioVertical*2);
+            g.fillOval(x, y, raioHorizontal * 2, raioVertical * 2);
         }
         g.setColor(cor);
-        g.drawOval(x, y, raioHorizontal*2, raioVertical*2);  
+        g.drawOval(x, y, raioHorizontal * 2, raioVertical * 2);
     }
 
     @Override
@@ -29,6 +31,4 @@ public class Elipse extends D2{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
 }
-

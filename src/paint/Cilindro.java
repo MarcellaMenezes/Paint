@@ -21,27 +21,27 @@ public class Cilindro extends D3 {
         //reta 1
         g.setColor(cor);
         g.drawLine(x, y, x, y2);
-        
+
         //reta 2
         g.setColor(cor);
         g.drawLine(x2, y, x2, y2);
-        
-        if(fundo){
+
+        if (fundo) {
             g.setColor(corFundo);
-            g.fillOval(x, y, x2-x, 2);
+            g.fillOval(x, y, x2 - x, 2);
         }
         g.setColor(cor);
-        g.drawOval(x, y, x2-x, 4);
-        
-        if(fundo){
+        g.drawOval(x, y, x2 - x, 4);
+
+        if (fundo) {
             g.setColor(corFundo);
-            g.fillOval(x, y2, x2-x, 2);
+            g.fillOval(x, y2, x2 - x, 2);
         }
         g.setColor(cor);
-        g.drawOval(x, y2, x2-x, 4);
-        
-        
+        g.drawOval(x, y2, x2 - x, 4);
+
     }
+
     @Override
     public double volume() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -56,5 +56,5 @@ public class Cilindro extends D3 {
     public double perimetro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
