@@ -17,13 +17,8 @@ public class Paint {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int raio=4;
-        Random posRandom = new Random();
-        for(int i=0; i<raio; i++){
-            int posx = posRandom.nextInt(raio);
-            int posy = posRandom.nextInt(raio);
-            System.out.println("Posx: "+posx+" Pos y: "+posy);
-        }
+       InterfacePaint tela= new InterfacePaint();
+       tela.setVisible(true);
     }
     
 }
